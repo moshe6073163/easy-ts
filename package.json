@@ -1,44 +1,44 @@
 {
-  "name": "nodejs-easy-ts",
-  "version": "1.0.2",
-  "description": "Easy TypeScript project setup and management CLI tool",
-  "keywords": [
-    "typescript",
-    "nodejs",
-    "ts-node",
-    "cli",
-    "typescript-cli",
-    "typescript-setup"
-  ],
-  "homepage": "https://github.com/moshe6073163/easy-ts#readme",
-  "bugs": {
-    "url": "https://github.com/moshe6073163/easy-ts/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/moshe6073163/easy-ts.git"
-  },
-  "license": "ISC",
-  "author": "moshe6073163",
-  "type": "module",
-  "main": "cli/index.js",
-  "bin": {
-    "easy-ts": "cli/index.js"
-  },
-  "files": [
-    "cli/",
-    "package.json",
-    "README.md"
-  ],
-  "scripts": {
-    "postinstall": "node -e \"console.log('easy-ts CLI installed! Run: easy-ts setup')\""
-  },
-  "dependencies": {
-    "commander": "^11.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.10.0",
-    "typescript": "^5.3.3",
-    "ts-node": "^10.9.2"
-  }
+    "name": "nodejs-easy-ts",
+    "version": "1.0.2",
+    "description": "Easy TypeScript project setup and management CLI tool",
+    "keywords": [
+        "typescript",
+        "nodejs",
+        "ts-node",
+        "cli",
+        "typescript-cli",
+        "typescript-setup"
+    ],
+    "homepage": "https://github.com/moshe6073163/easy-ts#readme",
+    "bugs": {
+        "url": "https://github.com/moshe6073163/easy-ts/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/moshe6073163/easy-ts.git"
+    },
+    "license": "ISC",
+    "author": "moshe6073163",
+    "type": "module",
+    "main": "cli/index.js",
+    "bin": {
+        "easy-ts": "./cli/index.js"
+    },
+    "files": [
+        "cli/",
+        "package.json",
+        "README.md"
+    ],
+    "scripts": {
+        "postinstall": "node -e \"console.log('easy-ts CLI installed! Run: easy-ts setup')\""
+    },
+    "dependencies": {
+        "commander": "^11.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "typescript": "^5.3.3",
+        "ts-node": "^10.9.2"
+    }
 }
