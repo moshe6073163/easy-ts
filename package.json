@@ -1,6 +1,6 @@
 {
-  "name": "easy-ts",
-  "version": "1.0.1",
+  "name": "nodejs-easy-ts",
+  "version": "1.0.2",
   "description": "Easy TypeScript project setup and management CLI tool",
   "keywords": [
     "typescript",

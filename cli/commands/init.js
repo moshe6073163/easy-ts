@@ -28,7 +28,7 @@ const templates = {
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "lib": ["ES2020"],
+    "lib": ["ES2020", "DOM"],
     "moduleResolution": "node",
     "rootDir": "./src",
     "outDir": "./dist",
