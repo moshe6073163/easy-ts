@@ -2,26 +2,10 @@
 
 ## Quick Installation
 
-### For Published Package (npm)
+Install the package globally from npm:
 
 ```bash
 npm install -g nodejs-easy-ts
-```
-
-### For Local Development
-
-```bash
-# 1. Navigate to project directory
-cd easy-ts
-
-# 2. Install dependencies
-npm install
-
-# 3. Link globally (creates easy-ts command)
-npm link
-
-# 4. Verify installation
-easy-ts --version
 ```
 
 ## Verify Installation
@@ -43,6 +27,7 @@ easy-ts setup
 ```
 
 This will install:
+
 - `typescript` (globally)
 - `ts-node` (globally)
 
@@ -51,14 +36,15 @@ This will install:
 ### Command Not Found Error
 
 **Windows:**
+
 1. Check if npm global bin is in PATH: `npm config get prefix`
 2. Restart terminal after installation
 3. Try: `npm list -g nodejs-easy-ts` to verify installation
 
 **All Platforms:**
+
 - Restart terminal after installation
-- Use `npx easy-ts` if command not found
-- For local dev: Make sure you ran `npm link`
+- Use `npx easy-ts` if command not found (works without global installation)
 
 ### Permission Errors (macOS/Linux)
 
@@ -67,6 +53,7 @@ sudo npm install -g nodejs-easy-ts
 ```
 
 Or configure npm to avoid sudo:
+
 ```bash
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
@@ -78,4 +65,3 @@ export PATH=~/.npm-global/bin:$PATH
 1. Run `easy-ts setup` to install global dependencies
 2. Run `easy-ts init` to create your first project
 3. See README.md for full documentation
-

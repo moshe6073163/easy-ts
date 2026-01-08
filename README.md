@@ -6,9 +6,7 @@ A simple command-line tool to quickly set up, run, and build TypeScript projects
 
 ## 📦 Installation
 
-### Option 1: Install from npm (Published Package)
-
-If the package is published to npm:
+Install the package globally from npm:
 
 ```bash
 npm install -g nodejs-easy-ts
@@ -16,41 +14,30 @@ npm install -g nodejs-easy-ts
 
 After installation, you can use the `easy-ts` command globally.
 
-### Option 2: Install Locally for Development
+### Verify Installation
 
-If you're developing or testing the package locally:
+Check that the installation was successful:
 
-1. **Navigate to the project directory:**
+```bash
+easy-ts --version
+```
 
-   ```bash
-   cd easy-ts
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Link the package globally (creates the `easy-ts` command):**
-
-   ```bash
-   npm link
-   ```
-
-   This creates a global symlink so you can use `easy-ts` from anywhere.
-
-4. **Verify installation:**
-
-   ```bash
-   easy-ts --version
-   ```
-
-   If you see the version number, the installation was successful!
+If you see a version number, the installation was successful!
 
 ### Troubleshooting: Command Not Found
 
 If you get `'easy-ts' is not recognized as an internal or external command`:
+
+**✅ Best Solution: Use npx (works everywhere)**
+
+```bash
+# Use npx instead - no global installation needed!
+npx easy-ts setup
+npx easy-ts init
+npx easy-ts run
+```
+
+**Alternative Solutions:**
 
 **For Windows:**
 
@@ -62,7 +49,8 @@ If you get `'easy-ts' is not recognized as an internal or external command`:
 
 - Try restarting your terminal after installation
 - Verify installation: `npm list -g nodejs-easy-ts`
-- Use full path: `npx easy-ts` (if installed locally)
+
+**💡 Recommendation:** You can use `npx easy-ts` for all commands without installing globally. The generated project scripts use `npx easy-ts` automatically, so they work everywhere!
 
 ## 🚀 Quick Start
 
@@ -111,16 +99,23 @@ Navigate to your project and run:
 ```bash
 cd my-project
 npm install
+
+# Option A: Direct command (if globally installed)
 easy-ts run
+
+# Option B: Use npx (works everywhere)
+npx easy-ts run
 ```
 
-Or use the npm scripts that were created:
+Or use the npm scripts that were created (these use `npx easy-ts` automatically):
 
 ```bash
-npm start      # Runs: easy-ts run
-npm run build  # Runs: easy-ts build
-npm run dev    # Runs: easy-ts dev
+npm start      # Runs: npx easy-ts run
+npm run build  # Runs: npx easy-ts build
+npm run dev    # Runs: npx easy-ts dev
 ```
+
+**Note:** The generated scripts use `npx easy-ts`, so they work even if `easy-ts` is not globally installed or not in your PATH.
 
 ## 📋 CLI Commands
 
@@ -129,7 +124,11 @@ npm run dev    # Runs: easy-ts dev
 Setup global TypeScript dependencies (typescript and ts-node).
 
 ```bash
+# If installed globally
 easy-ts setup
+
+# Or use npx
+npx easy-ts setup
 ```
 
 **What it does:**
@@ -163,12 +162,18 @@ Create a new TypeScript project with all necessary files.
 ```bash
 # Create project in current directory
 easy-ts init
+# or
+npx easy-ts init
 
 # Create project with custom name
 easy-ts init --name my-app
+# or
+npx easy-ts init --name my-app
 
 # Create project in specific directory
 easy-ts init --name my-app --dir ./projects/my-app
+# or
+npx easy-ts init --name my-app --dir ./projects/my-app
 ```
 
 **What it creates:**
@@ -200,12 +205,18 @@ Run TypeScript files with ts-node (no compilation needed).
 ```bash
 # Run default file (src/index.ts)
 easy-ts run
+# or
+npx easy-ts run
 
 # Run specific file
 easy-ts run src/app.ts
+# or
+npx easy-ts run src/app.ts
 
 # Run with watch mode
 easy-ts run --watch src/app.ts
+# or
+npx easy-ts run --watch src/app.ts
 ```
 
 ### `easy-ts build [options]`
@@ -221,9 +232,13 @@ Build TypeScript project (compile to JavaScript).
 ```bash
 # Build once
 easy-ts build
+# or
+npx easy-ts build
 
 # Build with watch mode
 easy-ts build --watch
+# or
+npx easy-ts build --watch
 ```
 
 **Output:** Compiled JavaScript files in `dist/` directory.
@@ -241,9 +256,13 @@ Run TypeScript in development mode with watch enabled.
 ```bash
 # Run default file in watch mode
 easy-ts dev
+# or
+npx easy-ts dev
 
 # Run specific file in watch mode
 easy-ts dev src/app.ts
+# or
+npx easy-ts dev src/app.ts
 ```
 
 ## 📁 Project Structure
@@ -271,14 +290,19 @@ The `init` command creates a `package.json` with:
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "easy-ts run",
-    "build": "easy-ts build",
-    "dev": "easy-ts dev"
+    "start": "npx easy-ts run",
+    "build": "npx easy-ts build",
+    "dev": "npx easy-ts dev"
   }
 }
 ```
 
-**Important:** The generated project uses `easy-ts` commands, so make sure `easy-ts` is installed globally or use `npx easy-ts` instead.
+**Important:** The generated scripts use `npx easy-ts`, which means:
+
+- ✅ Works even if `easy-ts` is not globally installed
+- ✅ Works even if `easy-ts` is not in your PATH
+- ✅ Automatically uses the correct version
+- ✅ No need to install `easy-ts` globally to use the scripts
 
 ## ⚙️ Requirements
 
@@ -295,18 +319,24 @@ Global dependencies (installed by `easy-ts setup`):
 ### 1. Install and Setup
 
 ```bash
-# Install easy-ts globally (or use npm link for local development)
+# Install easy-ts globally from npm
 npm install -g nodejs-easy-ts
 
 # Setup global TypeScript dependencies
 easy-ts setup
+
+# Or use npx (no global installation needed)
+npx easy-ts setup
 ```
 
 ### 2. Create a New Project
 
 ```bash
-# Create a new project
+# If installed globally
 easy-ts init --name my-app
+
+# Or use npx
+npx easy-ts init --name my-app
 
 # Navigate to project
 cd my-app
@@ -315,18 +345,27 @@ cd my-app
 ### 3. Develop
 
 ```bash
-# Run in development mode (with watch)
+# Direct command (if globally installed)
 easy-ts dev
 
-# Or use npm script
+# Or use npx
+npx easy-ts dev
+
+# Or use npm script (recommended - uses npx automatically)
 npm run dev
 ```
 
 ### 4. Build for Production
 
 ```bash
-# Build TypeScript to JavaScript
+# Direct command (if globally installed)
 easy-ts build
+
+# Or use npx
+npx easy-ts build
+
+# Or use npm script (recommended)
+npm run build
 
 # Run compiled JavaScript
 node dist/index.js
@@ -336,38 +375,42 @@ node dist/index.js
 
 ### 'easy-ts' is not recognized as an internal or external command
 
-**Solution 1: Install globally**
+**✅ Best Solution: Use npx (No installation needed)**
+
+```bash
+# Use npx instead - works everywhere!
+npx easy-ts setup
+npx easy-ts init
+npx easy-ts run
+```
+
+**Alternative Solutions:**
+
+**Solution 1: Install globally from npm**
 
 ```bash
 npm install -g nodejs-easy-ts
+easy-ts --version
 ```
 
-**Solution 2: Use npm link (for local development)**
-
-```bash
-cd easy-ts
-npm install
-npm link
-```
-
-**Solution 3: Use npx**
-
-```bash
-npx easy-ts --version
-```
-
-**Solution 4: Check PATH (Windows)**
+**Solution 2: Check PATH (Windows)**
 
 - Find npm global directory: `npm config get prefix`
 - Add `{npm-global-directory}\node_modules` to your PATH
 - Restart terminal
+
+**💡 Recommendation:** Just use `npx easy-ts` - it works everywhere without any setup!
 
 ### ts-node is not installed
 
 Run the setup command:
 
 ```bash
+# If installed globally
 easy-ts setup
+
+# Or use npx
+npx easy-ts setup
 ```
 
 Or install manually:

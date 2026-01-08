@@ -8,23 +8,23 @@ import { writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { join, resolve } from 'path';
 
 const templates = {
-  'package.json': `{
+    'package.json': `{
   "name": "{{name}}",
   "version": "1.0.0",
   "description": "TypeScript project",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "start": "easy-ts run",
-    "build": "easy-ts build",
-    "dev": "easy-ts dev"
+    "start": "npx easy-ts run",
+    "build": "npx easy-ts build",
+    "dev": "npx easy-ts dev"
   },
   "keywords": ["typescript"],
   "author": "",
   "license": "ISC"
 }`,
 
-  'tsconfig.json': `{
+    'tsconfig.json': `{
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
@@ -45,7 +45,7 @@ const templates = {
   "exclude": ["node_modules", "dist"]
 }`,
 
-  'src/index.ts': `// Main TypeScript entry point
+    'src/index.ts': `// Main TypeScript entry point
 
 console.log('🚀 Hello from TypeScript!');
 
@@ -58,7 +58,7 @@ const message = greet('TypeScript Developer');
 console.log(message);
 `,
 
-  '.gitignore': `# Dependencies
+    '.gitignore': `# Dependencies
 node_modules/
 
 # Build output
@@ -89,7 +89,7 @@ yarn-debug.log*
 yarn-error.log*
 `,
 
-  'README.md': `# {{name}}
+    'README.md': `# {{name}}
 
 TypeScript project created with easy-ts.
 
@@ -106,6 +106,8 @@ npm install
 \`\`\`bash
 npm start
 # or
+npx easy-ts run
+# or (if easy-ts is globally installed)
 easy-ts run
 \`\`\`
 
@@ -114,6 +116,8 @@ easy-ts run
 \`\`\`bash
 npm run build
 # or
+npx easy-ts build
+# or (if easy-ts is globally installed)
 easy-ts build
 \`\`\`
 
@@ -122,6 +126,8 @@ easy-ts build
 \`\`\`bash
 npm run dev
 # or
+npx easy-ts dev
+# or (if easy-ts is globally installed)
 easy-ts dev
 \`\`\`
 
@@ -130,52 +136,54 @@ easy-ts dev
 - \`src/\` - TypeScript source files
 - \`dist/\` - Compiled JavaScript output
 - \`tsconfig.json\` - TypeScript configuration
+
+**Note:** The npm scripts use \`npx easy-ts\`, so they work even if easy-ts is not globally installed.
 `
 };
 
 function createFile(dir, filename, content, projectName) {
-  const filePath = join(dir, filename);
-  const processedContent = content.replace(/\{\{name\}\}/g, projectName);
-  writeFileSync(filePath, processedContent, 'utf-8');
-  console.log(`✅ Created ${filename}`);
+    const filePath = join(dir, filename);
+    const processedContent = content.replace(/\{\{name\}\}/g, projectName);
+    writeFileSync(filePath, processedContent, 'utf-8');
+    console.log(`✅ Created ${filename}`);
 }
 
 export async function initCommand(options) {
-  const projectName = options.name;
-  const targetDir = resolve(options.dir);
+    const projectName = options.name;
+    const targetDir = resolve(options.dir);
 
-  console.log(`🚀 Creating TypeScript project: ${projectName}`);
-  console.log(`📁 Directory: ${targetDir}\n`);
+    console.log(`🚀 Creating TypeScript project: ${projectName}`);
+    console.log(`📁 Directory: ${targetDir}\n`);
 
-  // Check if directory exists and is not empty
-  if (existsSync(targetDir)) {
-    const files = readdirSync(targetDir);
-    if (files.length > 0 && !files.includes('package.json')) {
-      console.log('⚠️  Directory is not empty. Continuing anyway...\n');
+    // Check if directory exists and is not empty
+    if (existsSync(targetDir)) {
+        const files = readdirSync(targetDir);
+        if (files.length > 0 && !files.includes('package.json')) {
+            console.log('⚠️  Directory is not empty. Continuing anyway...\n');
+        }
+    } else {
+        mkdirSync(targetDir, { recursive: true });
     }
-  } else {
-    mkdirSync(targetDir, { recursive: true });
-  }
 
-  // Create directory structure
-  const srcDir = join(targetDir, 'src');
-  if (!existsSync(srcDir)) {
-    mkdirSync(srcDir, { recursive: true });
-  }
+    // Create directory structure
+    const srcDir = join(targetDir, 'src');
+    if (!existsSync(srcDir)) {
+        mkdirSync(srcDir, { recursive: true });
+    }
 
-  // Create files
-  console.log('📝 Creating project files...\n');
-  
-  createFile(targetDir, 'package.json', templates['package.json'], projectName);
-  createFile(targetDir, 'tsconfig.json', templates['tsconfig.json'], projectName);
-  createFile(targetDir, 'src/index.ts', templates['src/index.ts'], projectName);
-  createFile(targetDir, '.gitignore', templates['.gitignore'], projectName);
-  createFile(targetDir, 'README.md', templates['README.md'], projectName);
+    // Create files
+    console.log('📝 Creating project files...\n');
 
-  console.log('\n✅ Project created successfully!');
-  console.log('\n📦 Next steps:');
-  console.log(`   cd ${targetDir}`);
-  console.log('   npm install');
-  console.log('   npm start');
+    createFile(targetDir, 'package.json', templates['package.json'], projectName);
+    createFile(targetDir, 'tsconfig.json', templates['tsconfig.json'], projectName);
+    createFile(targetDir, 'src/index.ts', templates['src/index.ts'], projectName);
+    createFile(targetDir, '.gitignore', templates['.gitignore'], projectName);
+    createFile(targetDir, 'README.md', templates['README.md'], projectName);
+
+    console.log('\n✅ Project created successfully!');
+    console.log('\n📦 Next steps:');
+    console.log(`   cd ${targetDir}`);
+    console.log('   npm install');
+    console.log('   npm start');
 }
 
