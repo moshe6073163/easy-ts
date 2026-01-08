@@ -1,0 +1,37 @@
+{
+  "name": "easy-ts",
+  "version": "1.0.0",
+  "description": "Easy TypeScript project setup and management CLI tool",
+  "type": "module",
+  "main": "cli/index.js",
+  "bin": {
+    "easy-ts": "./cli/index.js"
+  },
+  "scripts": {
+    "postinstall": "node -e \"console.log('easy-ts CLI installed! Run: easy-ts setup')\""
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "ts-node",
+    "cli",
+    "typescript-cli",
+    "typescript-setup"
+  ],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "cli/",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
+
