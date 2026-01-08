@@ -1,15 +1,7 @@
 {
   "name": "easy-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy TypeScript project setup and management CLI tool",
-  "type": "module",
-  "main": "cli/index.js",
-  "bin": {
-    "easy-ts": "./cli/index.js"
-  },
-  "scripts": {
-    "postinstall": "node -e \"console.log('easy-ts CLI installed! Run: easy-ts setup')\""
-  },
   "keywords": [
     "typescript",
     "nodejs",
@@ -18,20 +10,35 @@
     "typescript-cli",
     "typescript-setup"
   ],
-  "author": "",
+  "homepage": "https://github.com/moshe6073163/easy-ts#readme",
+  "bugs": {
+    "url": "https://github.com/moshe6073163/easy-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moshe6073163/easy-ts.git"
+  },
   "license": "ISC",
+  "author": "moshe6073163",
+  "type": "module",
+  "main": "cli/index.js",
+  "bin": {
+    "easy-ts": "cli/index.js"
+  },
   "files": [
     "cli/",
     "package.json",
     "README.md"
   ],
+  "scripts": {
+    "postinstall": "node -e \"console.log('easy-ts CLI installed! Run: easy-ts setup')\""
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "typescript": "^5.3.3",
     "ts-node": "^10.9.2"
-  },
-  "dependencies": {
-    "commander": "^11.1.0"
   }
 }
-
